@@ -16,16 +16,6 @@ hitRates = [
     [59.33, 84.87, 92.65, 95.24],
     [59.33, 85.69, 93.56, 95.90]
 ]
-
-# for cacheSize in cacheSizes:
-#     hitRate = []
-#     for policy in policies:
-#         result = subprocess.run(["./paging-policy.py", "-c", "-p", policy,
-#             "-f", "./vpn.txt", "-C", str(cacheSize)], stdout=subprocess.PIPE)
-#         result = result.stdout.decode('utf-8')
-#         hitRate.append(result)
-#     hitRates.append(hitRate)
-
 for i in range(len(policies)):
     plt.plot(cacheSizes, hitRates[i])
 
