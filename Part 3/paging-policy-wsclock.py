@@ -7,7 +7,7 @@ import random
 import math
 import time
 
-# to make Python2 and Python3 act the same -- how dumb
+# To make Python2 and Python3 act the same
 def random_seed(seed):
     try:
         random.seed(seed, version=1)
@@ -78,12 +78,12 @@ def wsclock_algorithm(page):
 
     while scanned_pages < len(memory):
         candidate = memory[clock_pointer]
-        print(f"Scanning page {candidate}, ref_bit={ref_bits[candidate]}, time_since_access={time_now - access_time[candidate]}")  # Діагностика
+        print(f"Scanning page {candidate}, ref_bit={ref_bits[candidate]}, time_since_access={time_now - access_time[candidate]}")  # Diagnostic message
 
         if ref_bits[candidate] == 1:
             ref_bits[candidate] = 0
         elif (time_now - access_time[candidate]) > tau:
-            print(f"Evicting page {candidate}")
+            print(f"Evicting page {candidate}")  # Evict page based on aging
             del ref_bits[candidate]
             del access_time[candidate]
             return memory.pop(clock_pointer)
@@ -92,7 +92,7 @@ def wsclock_algorithm(page):
         scanned_pages += 1
 
     victim = memory[clock_pointer]
-    print(f"Evicting page {victim} as last resort")
+    print(f"Evicting page {victim} as last resort")  # Last resort eviction
     del ref_bits[victim]
     del access_time[victim]
     return memory.pop(clock_pointer)
